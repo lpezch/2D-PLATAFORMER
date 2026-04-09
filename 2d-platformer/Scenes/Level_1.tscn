@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=4 uid="uid://bbe1gnkrluus1"]
+[gd_scene load_steps=5 format=4 uid="uid://bbe1gnkrluus1"]
 
 [ext_resource type="Texture2D" uid="uid://fpfme8tl7dus" path="res://Sprites/Backgrounds/backgroundForest.png" id="1_i63mn"]
 [ext_resource type="TileSet" uid="uid://bflv6wtvteymx" path="res://Sprites/Tiles/new_tile_set.tres" id="1_oiua3"]
 [ext_resource type="PackedScene" uid="uid://c4ywbklgco3up" path="res://Scenes/player.tscn" id="3_vnunq"]
+[ext_resource type="PackedScene" uid="uid://dt1r6he6ky4pp" path="res://Scenes/enemy.tscn" id="4_nw7js"]
 
 [node name="Main" type="Node2D"]
 
 [node name="BackgroundForest" type="Sprite2D" parent="."]
-position = Vector2(274, -100)
+position = Vector2(-1, -2.0000305)
+scale = Vector2(4.576172, 2.6601563)
 texture = ExtResource("1_i63mn")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -15,3 +17,8 @@ tile_map_data = PackedByteArray("AAD//wAAAAAAAAMAAAAAAAAAAAAAAAMAAAABAAAAAAAAAAM
 tile_set = ExtResource("1_oiua3")
 
 [node name="Player" parent="." instance=ExtResource("3_vnunq")]
+
+[node name="enemy" parent="." instance=ExtResource("4_nw7js")]
+position = Vector2(143, -15)
+
+[connection signal="body_entered" from="enemy" to="enemy" method="_on_body_entered"]
